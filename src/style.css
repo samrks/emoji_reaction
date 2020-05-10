@@ -1,0 +1,1326 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*::before {box-sizing: border-box}
+*::after {box-sizing: border-box}
+@font-face {
+  font-family: "myfont";
+  src: url("./font/Myriad-Bold.woff.ttf");
+}
+body {
+  transition: .5s linear all;
+  background-color: #ffc427;
+  max-height: 100vh;
+  max-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 入场动画 ↓ */
+.global {
+  max-width: 950px;
+  max-height: 170px;
+  transition: .5s ease all;
+  border-radius: 85px;
+}
+.main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 950px; /*170 950*/
+  height: 170px;
+  background-color: transparent;
+  border-radius: 85px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: .3s ease all;
+}
+.bg_box {
+  width: 950px;
+  height: 170px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  /*border: 1px solid #fff;*/
+  /*border-radius: 85px;*/
+}
+.circle_line {
+  width: 950px;
+  height: 170px;
+  border-radius: 85px;
+  border: 5px solid #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+}
+.bg_box .main_bg {
+  background-color: #fff; /* transparent */
+  width: 170px;
+  height: 170px;
+  border-radius: 85px;
+  transform-origin: left;
+  z-index: -1; /*-1*/
+  box-shadow: 0 15px 30px #f1ab23;
+  filter: drop-shadow(0px 42px 54px #f0ad22);
+}
+.emoji {opacity: 0;transform: translateY(0px);transition: .5s ease all;}
+.main {opacity: 0; width: 950px;}
+.main_bg {opacity: 0; width: 170px;}
+@keyframes circle_line {
+  50% {width: 950px;height: 170px;border-radius: 85px;opacity: .3}
+  100% {width: 1000px;height: 220px;border-radius: 110px;opacity: 0}
+}
+@keyframes main_bg_in {
+  0% {opacity: 0;width: 170px;}
+  27% {opacity: 1;width: 1078px;}
+  30% {opacity: 1;width: 1100px;}
+  40% {opacity: 1;width: 950px;}
+  50% {opacity: 1;width: 980px;}
+  90%, to {opacity: 1;width: 950px;}
+}
+@keyframes main_in {
+  0% {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes emoji_in {
+  0% {opacity: 0;transform: translateY(50px)}
+  60% {opacity: 1;transform: translateY(-10px)}
+  100% {opacity: 1;transform: translateY(0px)}
+}
+/* emoji 缩放 ↓ */
+@keyframes fear_big {
+  0% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+  100% {opacity: 1;transform: scale(5) rotate(-15deg);top: -30%;left: 10%;}
+}
+@keyframes fear_small {
+  0% {opacity: 1;transform: scale(5) rotate(-15deg);top: -30%;left: 10%;}
+  100% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+}
+@keyframes heart_big {
+  0% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+  100% {opacity: 1;transform: scale(3) rotate(10deg);top: 30%;left: -5%;}
+}
+@keyframes heart_small {
+  0% {opacity: 1;transform: scale(3) rotate(10deg);top: 30%;left: -5%;}
+  100% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+}
+@keyframes cry_big {
+  0% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+  100% {opacity: 1;transform: scale(2) rotate(5deg);top: -200px;left: 36px;}
+}
+@keyframes cry_small {
+  0% {opacity: 1;transform: scale(2) rotate(5deg);top: -200px;left: 36px;}
+  100% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+}
+@keyframes cool_big {
+  0% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+  100% {opacity: 1;transform: scale(4) rotate(-10deg);top: 20%;left: -15%;}
+}
+@keyframes cool_small {
+  0% {opacity: 1;transform: scale(4) rotate(-10deg);top: 20%;left: -15%;}
+  100% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+}
+@keyframes angry_big {
+  0% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+  100% {opacity: 1;transform: scale(5) rotate(20deg);top: -20%;left: -5%;}
+}
+@keyframes angry_small {
+  0% {opacity: 1;transform: scale(5) rotate(20deg);top: -20%;left: -5%;}
+  100% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+}
+@keyframes wink_big {
+  0% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+  100% {opacity: 1;transform: scale(3) rotate(-10deg);top: 25%;left: -10%;}
+}
+@keyframes wink_small {
+  0% {opacity: 1;transform: scale(3) rotate(-10deg);top: 25%;left: -10%;}
+  100% {opacity: 1;transform: scale(1) rotate(0deg);top: 0;left: 0;}
+}
+
+
+
+/* 通用样式 */
+.emoji {
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+/* 0 */
+.emoji .face {
+  background-color: #ffca3f;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+/* 1 */
+.emoji .face .inset_shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: inset -5px -5px 0 #f7b701;
+}
+.emoji .face .highlight::before,
+.emoji .face .highlight:after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+}
+.emoji .face .highlight::before {
+  top: 14px;
+  left: 0;
+  background-color: rgba(255, 255, 255, .5);
+  width: 46px;
+  height: 11px;
+  border-top-right-radius: 102px 38px;
+  border-top-left-radius: 94px 42px;
+  transform: rotate(-41deg);
+}
+.emoji .face .highlight::after {
+  top: 11px;
+  left: -7px;
+  background-color: #ffca3f;
+  width: 81px;
+  height: 11px;
+  border-top-left-radius: 131px 38px;
+  border-top-right-radius: 114px 38px;
+  transform: rotate(-36deg);
+}
+.emoji .throat {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 4px solid #1a1323;
+}
+.emoji .throat .cover {
+  width: 2px;
+  height: 8px;
+  background-color: #302c3b;
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+/*  fear  */
+.emoji.fear .face .highlight::after {
+  background-color: #8aace3; /* #ffca3f #8aace3 */
+}
+/* 2 */
+.fear .face .blue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 #8aace3; /* #ffca3f #8aace3 */
+  /*opacity: 0;*/
+}
+.fear_eye {
+  width: 28px;
+  height: 35px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 54px; /* 54 */
+  left: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.6);
+  transform-origin: center bottom;
+  border: 3px solid #333;
+}
+.fear_eye.right {
+  left: auto;
+  right: 10px;
+  transform: rotate(-20deg);
+}
+.fear_eye.left::before,
+.fear_eye.right::before {
+  content: "";
+  background-color: #302c3b; /* #302c3b #fff */
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.fear_mouth {
+  height: 20px; /* 40 */
+  width: 30px;
+  background-color: #302c3b;
+  position: absolute;
+  bottom: 30px; /* 6 */
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px 10px 5px 5px; /*border-radius: 50%;*/
+  border: 5px solid #302c3b;
+  overflow: hidden;
+}
+.fear_mouth .teeth {
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 2;
+}
+.fear_mouth .tongue {
+  width: 20px;
+  height: 10px;
+  position: absolute;
+  bottom: -6px; /* -1 */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f66b60;
+  border-radius: 50%;
+  z-index: 1;
+  animation: fear_tongue 2s linear infinite forwards;
+}
+.fear_hand {
+  width: 30px;
+  height: 40px;
+  position: absolute;
+  bottom: -22px; /* -3 */
+  left: 0; /* -9 */
+  transform: rotate(-30deg) scale(0.0001); /* 1.15 */
+  opacity: 0;
+}
+.fear_hand.right {
+  left: auto;
+  right: 0; /*  -9 */
+  transform: rotate(30deg) rotateY(180deg) scale(0.0001);
+  opacity: 0;
+}
+.fear_hand::before {
+  content: "";
+  width: 15px;
+  height: 35px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top-right-radius: 38px 80px;
+  border-top-left-radius: 11px 33px;
+  border-bottom-right-radius: 29px 32px;
+  border-bottom-left-radius: 10px 11px;
+  background-color: #d18900;
+  /*clip-path: polygon(155% 116.66%, -7px 113.34%, -130% -1px, -10% -5px, 170% -1px);*/
+}
+.fear_hand::after {
+  content: "";
+  width: 10px;
+  height: 12px;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  /* border-top-right-radius: 45px 78px; */
+  border-top-left-radius: 69px 65px;
+  /* border-bottom-right-radius: 26px 25px; */
+  border-bottom-left-radius: 68px 67px;
+  background-color: #d18900;
+  /*box-shadow: 2px -4px 0 0 #d18900, 1px -2px 0 0 #d18900;*/
+}
+.fear_hand .cover, .fear_hand .cover::before {
+  width: 9px;
+  height: 24px;
+  position: absolute;
+  bottom: 7px;
+  right: 6px;
+  background-color: #d18900;
+  transform: rotate(21deg);
+  border-radius: 50% 15px 0 2px;
+  box-shadow: -1px 2px 0 -1px #d18900;
+}
+.fear_hand .cover::before {
+  content: "";
+  bottom: -1px;
+  right: 1px;
+  transform: rotate(-10deg);
+}
+/* animation */
+.emoji.fear .face .highlight::after {animation: face_blue_highlight 2s linear infinite forwards;}
+.fear .face .blue {animation: face_blue 2s linear infinite forwards;}
+.fear_eye {animation: fear_eye 2s linear infinite forwards;}
+.fear_eye.right {animation: fear_eye_right 2s linear infinite forwards;}
+.fear_eye.left::before, .fear_eye.right::before {animation: fear_eyeball 2s linear infinite forwards;}
+.fear_mouth {animation: fear_mouth 2s ease infinite forwards;}
+.fear .fear_mouth .throat { animation: fear_throat 2s linear infinite forwards;}
+.fear_hand.left {animation: fear_hand_left 2s linear infinite forwards;}
+.fear_hand.right {animation: fear_hand_right 2s linear infinite forwards;}
+
+
+
+/* heart */
+.emoji .m-heart {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 12px;
+  left: 24px;
+  transform: rotate(-56deg) scale(1.05);
+  transform-origin: center bottom;
+  z-index: 3;
+}
+.emoji .m-heart.right {
+  left: auto;
+  right: 24px;
+  transform: rotate(56deg) scale(1.05) rotateY(180deg);
+}
+.emoji .m-heart::before,
+.emoji .m-heart::after {
+  content: "";
+  width: 26px;
+  height: 38px;
+  position: absolute;
+  left: 0;
+  top: -12px;
+  background-color: #e91b23;
+  border-radius: 30px 30px 0 0;
+  transform: rotate(-5deg);
+  z-index: 2;
+}
+.emoji .m-heart::before { box-shadow: inset 3px 3px 0 0 #e91b23, inset 0 5px 0 1px #f76b60; }
+.emoji .m-heart::after {
+  left: 8px;
+  top: -3px;
+  transform: rotate(94deg);
+  box-shadow: inset -2px 2px 0 1px #c71211, inset 0 4px 0 0 #f76b60;
+}
+.heart .mouth {
+  border-top-left-radius: 91px 20px;
+  border-top-right-radius: 91px 20px;
+  border-bottom-left-radius: 88px 70px;
+  border-bottom-right-radius: 88px 70px;
+  height: 33px;
+  width: 62px;
+  background-color: #302c3b;
+  border: 5px solid #302c3b;
+  overflow: hidden;
+  position: absolute;
+  bottom: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.heart .mouth .teeth {
+  background-color: #fff;
+  height: 6px;
+  width: 100%;
+  border-top-left-radius: 127px 29px;
+  border-top-right-radius: 127px 29px;
+}
+.heart .mouth .tongue {
+  background-color: #f66b60;
+  height: 5px;
+  width: 26px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.heart .mouth .throat {
+  z-index: -1;
+  bottom: 1px;
+  width: 17px;
+  height: 16px;
+  border: 6px solid #1a1323;
+}
+.heart .mouth .throat .cover {
+  width: 3px;
+}
+/* animation */
+.heart .m-heart.left {
+  top: 12px; /*12 15*/
+  transform: rotate(-56deg) scale(.75); /*1.05*/
+  animation: heart_beat_left 1s linear infinite forwards;
+}
+.heart .m-heart.right {
+  top: 12px;
+  transform: rotate(56deg) scale(.75) rotateY(180deg);
+  animation: heart_beat_right 1s linear infinite forwards;
+}
+.heart .mouth {
+  height: 33px;
+  width: 54px;
+  bottom: 11px;
+  left: 50%;
+  animation: heart_mouth 1s linear infinite forwards;
+}
+
+
+
+/* cry */
+.emoji .eyebrow-w {
+  width: 26px;
+  height: 20px;
+  position: absolute;
+  top: 22px;
+  left: 14px;
+  transform: rotate(-62deg) rotateY(360deg);
+  overflow: hidden;
+  background-color: #ffca3f;
+  z-index: 1;
+}
+.emoji .eyebrow-w.right {
+  transform: rotate(62deg) rotateY(180deg);
+  left: auto;
+  right: 14px;
+}
+.emoji .eyebrow {
+  width: 100%;
+  height: 100%;
+  background-color: #8d7223;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom-left-radius: 27px 21px;
+}
+.emoji .eyebrow::before {
+  content: "";
+  width: 33px;
+  height: 25px;
+  background-color: #ffca3f;
+  position: absolute;
+  top: -13px;
+  left: 0;
+  border-radius: 50%;
+  box-shadow: 34px 0 0 7px #ffca3f;
+  transform: rotate(44deg);
+}
+/* 3 */
+.cry_eye-w {
+  width: 36px;
+  height: 12px;
+  position: absolute;
+  top: 48px;
+  left: 11px;
+  overflow: hidden;
+  z-index: 3;
+}
+.cry_eye-w.right {left: auto; right: 11px}
+.cry_eye-w .cry_eye {
+  width: 50px;
+  height: 60px;
+  background-color: #302c3b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-left-radius: 26px 60px;
+  border-bottom-right-radius: 26px 60px;
+}
+.cry_eye-w .cry_eye::before {
+  content: "";
+  width: 32px;
+  height: 30px;
+  background-color: #ffca3f;
+  position: absolute;
+  top: 23px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  box-shadow: -25px 0 0 0 #ffca3f, 25px 0 0 0 #ffca3f;
+}
+/* 1 */
+.cry .flow-wrap {
+  width: 60px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  overflow: hidden;
+  z-index: 2;
+}
+.cry .flow {
+  width: 13px;
+  height: 50px;
+  border-left: 3px solid #00aaff;
+  background: #73d6ff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+.cry .flow.right {
+  left: auto;
+  right: 0;
+  border-left: none;
+  border-right: 3px solid #00aaff;
+}
+.cry_mouth-w {
+  width: 100%;
+  height: 10%; /* 100% */
+  position: absolute;
+  bottom: 12px; /*12*/
+  left: 0;
+  transform-origin: center top;
+  z-index: 1;
+}
+.cry_mouth-w .cry_mouth {
+  width: 40px;
+  height: 23px;
+  background-color: #302c3b;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-left-radius: 50px 35px;
+  border-top-right-radius: 50px 35px;
+  border: 4px solid #302c3b;
+  border-bottom: none;
+  overflow: hidden;
+}
+.cry_mouth-w .cry_mouth::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  transform-origin: left;
+  transform: rotate(-35deg) translateX(-50%) skew(20deg);
+  background-color: #ffca3f;
+  border-radius: 7px;
+  box-shadow: -10px -1px 0 0 #ffca3f;
+}
+.cry_mouth-w .fill {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  bottom: -1px;
+  left: 30px;
+  background-color: #302c3b;
+  border-bottom-left-radius: 4px 44px;
+  border-bottom-right-radius: 37px 25px;
+}
+.cry_mouth-w .fill.right {
+  left: auto;
+  right: 30px;
+  transform: rotate(2deg) rotateY(180deg);
+  border-bottom-left-radius: 61px 37px;
+  border-bottom-right-radius: 94px 72px;
+}
+.cry_mouth-w .fill::before {
+  content: "";
+  width: 8px;
+  height: 17px;
+  position: absolute;
+  bottom: 0;
+  left: -1px;
+  background-color: #302c3b;
+  border-radius: 50%;
+  transform: rotate(12deg);
+}
+.cry_mouth-w .cry_mouth .teeth {
+  width: 90%;
+  height: 6px;
+  background-color: #fff;
+  border-radius: 3px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.cry .face {z-index: 1;}
+.cry .pool {
+  width: 86px;
+  height: 12px;
+  border-radius: 50%;
+  border: 3px solid #00aaff;
+  border-top: none;
+  background-color: #73d6ff;
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+.cry .pool::before, .cry .pool::after {
+  content: "";
+  width: 26px;
+  height: 13px;
+  border-radius: 50%;
+  border-bottom: 3px solid #00aaff;
+  background-color: #73d6ff;
+  position: absolute;
+  bottom: -6px;
+  left: 16px;
+}
+.cry .pool::after {
+  width: 32px;
+  height: 12px;
+  bottom: -7px;
+  left: 38px;
+  transform: rotate(-4deg);
+}
+.cry .pool .bubble {
+  width: 9px;
+  height: 2px;
+  border-radius: 50%;
+  background-color: #d0faff;
+  position: absolute;
+  bottom: 0;
+  left: 18px;
+}
+.cry .pool .bubble.right {
+  width: 13px;
+  height: 3px;
+  left: auto;
+  right: 16px;
+  bottom: -2px;
+  z-index: 1;
+}
+/* animation */
+.cry_mouth-w {animation: cry_mouth_w 3s linear infinite forwards;}
+.cry .flow {animation: cry_flow 3s linear infinite forwards;}
+.cry .pool {animation: cry_pool 3s linear infinite forwards;}
+.cry .eyebrow-w.left {animation: cry_eyebrow_left 3s linear infinite forwards;}
+.cry .eyebrow-w.right {animation: cry_eyebrow_right 3s linear infinite forwards;}
+.cry_eye-w {animation: cry_eye 3s linear infinite forwards;}
+
+
+
+/* cool */
+.cool .eye-wrap {
+  width: 22px;
+  height: 22px;
+  background-color: #ffca3f;
+  position: absolute;
+  top: 28px;
+  left: 22px;
+  overflow: hidden;
+  transform: rotate(8deg) rotateY(360deg);
+  z-index: 1;
+}
+.cool .eye-wrap.right {
+  transform: rotate(-8deg) rotateY(180deg);
+  left: auto;
+  right: 22px;
+}
+.cool .eye-wrap .eye {
+  width: 24px;
+  height: 24px;
+  background-color: #302c3b;
+  transform: rotate(-45deg) skew(18deg, 18deg);
+  position: absolute;
+  top: 0;
+  left: -13px;
+}
+.cool .eye-wrap .eye + .cover { /* 遮挡 */
+  width: 40px;
+  height: 40px;
+  background-color: #ffca3f;
+  position: absolute;
+  transform: rotate(-45deg) skew(8deg, 8deg);
+  top: -8px;
+  left: -42px;
+}
+.cool .glasses-w, .cool .face_move-w {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.cool .face_move-w {z-index: 1;}
+.cool .glasses-w {
+  z-index: 2;
+  position: absolute; top: -2px; left: 0;
+  width: 100%; height: 100%;
+  /*background-color: #ff0000;*/
+}
+.cool .glasses .top {
+  width: 52px;
+  height: 6px;
+  border-radius: 10px/5px;
+  background-color: #302c3b;
+  position: absolute;
+  top: 23px;
+  left: 4px;
+  transform: rotate(5deg);
+}
+.cool .glasses .glass {
+  width: 42px;
+  height: 26px;
+  background-color: #302c3b;
+  position: absolute;
+  top: 25px;
+  left: 6.5px;
+  transform: rotate(-4deg);
+  border-top-right-radius: 31px 40px;
+  border-top-left-radius: 12px 45px;
+  border-bottom-right-radius: 64px 57px;
+  border-bottom-left-radius: 35px 37px;
+}
+.cool .glasses .highlight-w {
+  width: 12px;
+  height: 20px;
+  position: absolute;
+  top: 30px;
+  left: 9px;
+  transform: rotate(-12deg);
+  overflow: hidden;
+  z-index: 2;
+  /*background-color: #ff0000;*/
+}
+.cool .glasses .highlight-w .circle {
+  width: 3px;
+  height: 3px;
+  background-color: #fff;
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  border-radius: 50%;
+  z-index: 1;
+}
+.cool .glasses .highlight-w .line {
+  width: 10px;
+  height: 15px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  border-top-left-radius: 19px 63px;
+  border-bottom-left-radius: 55px 60px;
+}
+.cool .glasses .highlight-w .line::before { /*遮挡*/
+  content: "";
+  width: 10px;
+  height: 18px;
+  background-color: #302c3b;
+  position: absolute;
+  bottom: 0;
+  left: 3px;
+  border-top-left-radius: 19px 63px;
+  border-bottom-left-radius: 58px 52px;
+  box-shadow: 2px 16px 0 0 #302c3b, -8px -12px 0 0 #302c3b;
+}
+.cool .glasses {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.cool .glasses.right {
+  transform: rotateY(180deg);
+  left: auto;
+  right: 0;
+}
+.cool .glasses.right .highlight-w {
+  transform: rotate(25deg) rotateY(180deg);
+  left: auto;
+  right: -43px;
+  top: 27px;
+}
+.cool .mouth {
+  border-bottom-left-radius: 41px 20px;
+  border-bottom-right-radius: 41px 20px;
+  height: 14px; /*30*/
+  width: 40px; /*64*/
+  background-color: #ffca3f; /* 302c3b */
+  box-shadow: #302c3b 0 9px 0 -1px, #302c3b 0 13px 0 -1px, #302c3b 0 17px 0 -1px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 39px; /*16*/
+  left: 50px;
+  transform: translateX(-50%);
+  transform-origin: center;
+}
+.cool .mouth .throat .cover {
+  width: 3px;
+}
+/* animation */
+.cool .glasses-w {opacity: 0;transform-origin: right;animation: cool_glasses 3s linear infinite forwards}
+.cool .face_move-w {animation: cool_face 3s linear infinite forwards}
+.cool .mouth {animation: cool_face_mouth 3s linear infinite forwards}
+
+
+
+/* angry */
+.emoji.angry .face, .emoji.angry .face .highlight::after {background-color: #fe4c4d;}
+.emoji.angry .face .inset_shadow {box-shadow: inset -5px -5px 0 #e03734;}
+.angry_eye {
+  width: 35px;
+  height: 23px;
+  border-top-left-radius: 99px 34px;
+  border-top-right-radius: 90px 41px;
+  border-bottom-left-radius: 92px 80px;
+  border-bottom-right-radius: 92px 67px;
+  transform: rotate(24deg);
+  background-color: #333;
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  overflow: hidden;
+}
+.angry_eye.right {
+  transform: rotate(-24deg) rotateY(180deg);
+  left: auto;
+  right: 10px;
+}
+.angry_eye .eyeball {
+  transform: rotate(0deg);
+  width: 37px;
+  height: 32px;
+  border-radius: 50%;
+  border: 8px solid #fff;
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+}
+.angry_eye .eyeball::before, .angry_eye .eyeball::after {
+  content: "";
+  position: absolute;
+  top: -34px;
+  right: -11px;
+  width: 68px;
+  height: 40px;
+  background-color: #333;
+  transform: rotate(-4deg);
+}
+.angry_eye .eyeball::after {
+  transform: rotate(17deg);
+  top: -38px;
+  right: -22px;
+}
+.angry .screen-wrap {
+  width: 80px;
+  height: 25px;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform-origin: center;
+  transform: translateX(-50%) rotate(-5deg);
+  border-radius: 5px;
+  background-color: #302c3b;
+  overflow: hidden;
+}
+.angry .screen-wrap .txt-wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.angry .screen-wrap .txt-wrap .txt {
+  font-size: 24px;
+  line-height: 26px;
+  color: #fff;
+  font-weight: bold;
+  font-family: myfont, serif;
+  transform: scale(1, 0.92); /* 压扁一点 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center; /* txt 垂直居中 */
+}
+.angry .screen-wrap .txt-wrap .txt:last-child {left: 80px;}
+/* animation */
+.angry_eye.left {animation: angry_eye_left 1s linear infinite forwards}
+.angry_eye.right {animation: angry_eye_right 1s linear infinite forwards}
+.angry .screen-wrap {animation: screen_jump .6s linear infinite forwards}
+
+
+
+/* wink */
+.emoji.wink .eyebrow-w {
+  top: 22px;
+  left: 18px;
+  transform: rotate(24deg) rotateX(180deg) rotateY(360deg);
+  z-index: 1;
+}
+.emoji.wink .eyebrow-w.right {
+  transform: rotate(-24deg) rotateX(180deg) rotateY(180deg);
+  left: auto;
+  right: 18px;
+}
+.wink .eye.left {
+  width: 16px;
+  height: 16px;
+  background-color: #302c3b;
+  border-radius: 50%;
+  position: absolute;
+  top: 40px;
+  left: 25px;
+  z-index: 2;
+}
+.wink .eye.right {
+  width: 16px;
+  height: 16px;
+  background-color: #302c3b;
+  border-radius: 50%;
+  position: absolute;
+  top: 40px;
+  right: 25px;
+  z-index: 2;
+}
+.wink .eye_r_cover {
+  width: 23px;
+  height: 14px;
+  /*border-radius: 50%;*/
+  background-color: #ffca3f;
+  position: absolute;
+  top: 57px;
+  right: 23px;
+  z-index: 4;
+
+}
+.wink .lip {
+  position: absolute;
+  bottom: 5px;
+  left: 50px;
+  transform: translateX(-5px) scale(1, 1);
+  color: #302c3b;
+  font-weight: bolder;
+  font-family: Microsoft YaHei UI, "微软雅黑", serif;
+  font-size: 30px;
+  z-index: 999;
+}
+/* 4 */
+.emoji.wink .heart-wrap {
+  z-index: 4;
+  position: absolute;top: 0;left: 0; width: 100%;height: 100%;
+}
+.emoji.wink .heart1 {
+  transform: rotate(-20deg) scale(.2); left: 52px; top: 42px; z-index: 99;
+  animation: heart1 2.5s linear infinite forwards;
+}
+.emoji.wink .heart2 {
+  transform: rotate(-20deg) scale(.7); left: 58px; top: 66px; z-index: 97;
+  animation: heart2 2.5s linear infinite forwards;
+}
+.emoji.wink .heart3 {
+  transform: rotate(-57deg) scale(.3); left: 62px; top: 66px; z-index: 98;
+  animation: heart3 2.5s linear infinite forwards;
+}
+/* animation */
+.emoji.wink .eyebrow-w.left {animation: eyebrow_left 2.5s linear infinite forwards;}
+.emoji.wink .eyebrow-w.right {animation: eyebrow_right 2.5s linear infinite forwards;}
+.wink .eye.left {animation: eye_left 2.5s linear infinite forwards;}
+.wink .eye.right {animation: eye_right 2.5s linear infinite forwards;}
+.wink .eye_r_cover {animation: eye_r_cover 2.5s linear infinite forwards;}
+.wink .lip {animation: lip_chu 2.5s linear infinite forwards;}
+
+
+
+/* animation fear */
+@keyframes face_blue {
+  0%, 12%, 65%, 100% { box-shadow: inset 0 0 0 #ffca3f;}
+  21%, 58% { box-shadow: inset 0 30px 0 #8aace3;}
+}
+@keyframes face_blue_highlight {
+  0%, 12%, 65%, 100% {background-color: #ffca3f;}
+  21%, 58% {background-color: #8aace3;}
+}
+@keyframes fear_eye {
+  0%, 100% {transform: scale(0.6) rotate(20deg);bottom: 54px; height: 35px;}
+  12.5% {transform: scale(0.6) rotate(20deg); bottom: 42px; border-radius: 50% 50% 8px 8px; height: 26px;}
+  18.75% {transform: scale(0.9) rotate(20deg); bottom: 44px; border-radius: 50%; height: 32px;border: 3px solid #333}
+  22.5% {transform: scale(1) rotate(20deg); bottom: 50px; border-radius: 50%; height: 32px;border: 3px solid #333;}
+  52.5% {transform: scale(1) rotate(20deg); bottom: 52px; border-radius: 50%; height: 35px;}
+  74% {transform: scale(0.6) rotate(20deg); bottom: 54px; border-radius: 50%; }
+}
+@keyframes fear_eye_right {
+  0%, 100% {transform: scale(0.6) rotate(-20deg);bottom: 54px; height: 35px;}
+  12.5% {transform: scale(0.6) rotate(-20deg); bottom: 42px; border-radius: 50% 50% 8px 8px; height: 26px;}
+  18.75% {transform: scale(0.9) rotate(-20deg); bottom: 44px; border-radius: 50%; height: 32px;border: 3px solid #333}
+  22.5% {transform: scale(1) rotate(-20deg); bottom: 50px; border-radius: 50%; height: 32px;border: 3px solid #333}
+  52.5% {transform: scale(1) rotate(-20deg); bottom: 52px; border-radius: 50%; height: 35px;}
+  74% {transform: scale(0.6) rotate(-20deg); bottom: 54px; border-radius: 50%;}
+}
+@keyframes fear_eyeball {
+  18%, 68% {background-color: #fff;}
+  15%, 75% {background-color: #302c3b;}
+  /*0%,100%{background-color: #fff;}*/
+}
+@keyframes fear_mouth {
+  12.5% {bottom: 7px; border-radius: 14px 14px 12px 12px;height: 28px;}
+  20% {bottom: 10px; border-radius: 50%;height: 34px;}
+  25% {bottom: 12px; border-radius: 50%;height: 42px;}
+  50% {bottom: 14px; border-radius: 50%;height: 44px;}
+  71.25% {bottom: 30px; border-radius: 10px 10px 5px 5px;height: 20px;}
+}
+@keyframes fear_throat {
+  0% {top: auto; bottom: 0;}
+  12.5% {top: auto; bottom: 7px;}
+  20% {top: auto; bottom: 8px;}
+  25% {top: auto; bottom: 10px;}
+  50% {top: auto; bottom: 11px;}
+  71.25% {top: auto; bottom: 0;}
+  100% {top: auto; bottom: -10px;}
+}
+@keyframes fear_hand_left {
+  12.5% {opacity: 0;transform: rotate(-30deg) scale(0.0001); bottom: -22px; left: 0;}
+  21.25% {opacity: 1;transform: rotate(-30deg) scale(1.15); bottom: -5px; left: -5px;}
+  51.25%, 58.75% {opacity: 1;transform: rotate(-30deg) scale(1.15); bottom: 0; left: -5px;}
+  67.5% {opacity: 1;transform: rotate(-30deg) scale(0.0001); bottom: -22px; left: 0;}
+}
+@keyframes fear_hand_right {
+  12.5% {opacity: 0;transform: rotate(30deg) rotateY(180deg) scale(0.0001); bottom: -22px; left: auto; right: 0; }
+  21.25% {opacity: 1;transform: rotate(30deg) rotateY(180deg) scale(1.15); bottom: -5px; left: auto; right: -5px; }
+  51.25%, 58.75% {opacity: 1;transform: rotate(30deg) rotateY(180deg) scale(1.15); bottom: 0; left: auto; right: -5px; }
+  67.5% {opacity: 1;transform: rotate(30deg) rotateY(180deg) scale(0.0001); bottom: -22px; left: auto; right: 0; }
+}
+
+
+
+/* animation heart */
+@keyframes heart_beat_left {
+  0%, 100% {transform: rotate(-56deg) scale(.75); top: 16px}
+  15% {transform: rotate(-56deg) scale(.85); top: 11px}
+  30% {transform: rotate(-56deg) scale(.95); top: 8px}
+  40% {transform: rotate(-56deg) scale(1.02); top: 9px}
+  60% {transform: rotate(-56deg) scale(.95); top: 11px}
+  75% {transform: rotate(-56deg) scale(.85); top: 13px}
+}
+@keyframes heart_beat_right {
+  0%, 100% {transform: rotate(56deg) rotateY(180deg) scale(.75); top: 16px}
+  15% {transform: rotate(56deg) rotateY(180deg) scale(.85); top: 11px}
+  30% {transform: rotate(56deg) rotateY(180deg) scale(.95); top: 8px}
+  40% {transform: rotate(56deg) rotateY(180deg) scale(1.02); top: 9px}
+  60% {transform: rotate(56deg) rotateY(180deg) scale(.95); top: 11px}
+  75% {transform: rotate(56deg) rotateY(180deg) scale(.85); top: 13px}
+}
+@keyframes heart_mouth {
+  0%, 100% {height: 27px; bottom: 9px;border-bottom-left-radius: 80px 70px;border-bottom-right-radius: 80px 70px;}
+  15% {height: 29px; bottom: 12px;}
+  30% {height: 32px; bottom: 13px;}
+  40% {height: 33px;bottom: 14px;border-bottom-left-radius: 100px 90px;border-bottom-right-radius: 100px 90px;}
+  60% {height: 32px;bottom: 13px;}
+  75% {height: 30px;bottom: 12px;}
+}
+
+
+
+/* animation cry */
+@keyframes cry_eyebrow_left {
+  0% {transform: rotate(-62deg) rotateY(360deg) scale(1, 1);}
+  25% {transform: rotate(-58deg) rotateY(360deg) scale(1, .6);}
+  35% {transform: rotate(-58deg) rotateY(360deg) scale(1, .8);}
+  45%, 86% {transform: rotate(-58deg) rotateY(360deg) scale(1, .6);}
+  100% {transform: rotate(-62deg) rotateY(360deg) scale(1, 1);}
+}
+@keyframes cry_eyebrow_right {
+  0% {transform: rotate(62deg) rotateY(180deg) scale(1, 1);}
+  25% {transform: rotate(58deg) rotateY(180deg) scale(1, .6);}
+  35% {transform: rotate(56deg) rotateY(180deg) scale(1, .8);}
+  45%, 86% {transform: rotate(58deg) rotateY(180deg) scale(1, .6);}
+  100% {transform: rotate(62deg) rotateY(180deg) scale(1, 1);}
+}
+@keyframes cry_mouth_w {
+  0%, 100% {transform: scale(.6);}
+  25% {transform: scale(.8);}
+  35% {transform: scale(.6);}
+  45%, 86% {transform: scale(1)}
+}
+@keyframes cry_flow {
+  0%, 43% {opacity: 1;transform: translateY(-200%);}
+  52%, 83% {opacity: 1;transform: translateY(0);}
+  88%, 100% {opacity: 0;transform: translateY(100%);}
+}
+@keyframes cry_eye {
+  0%, 43%, 53%, 65%, 75%, 85%, 100% {top: 49px;}
+  48%, 58%, 70%, 80% {top: 50px;}
+}
+@keyframes teardrop1 {
+  0%, 43% {opacity: 1;transform: translateY(-50px);}
+  51% {opacity: 1;transform: translateY(0px);}
+  59% {opacity: 0;transform: translateY(50px);}
+  76.1% {opacity: 0;transform: translateY(-50px);}
+  82% {opacity: 1;transform: translateY(0px);}
+  90% {opacity: 0;transform: translateY(50px);}
+  100% {opacity: 0;transform: translateY(0);}
+}
+@keyframes teardrop2 {
+  0%, 59% {opacity: 1;transform: translateY(-50px);}
+  59.1% {opacity: 0;transform: translateY(-50px);}
+  60% {opacity: 1;transform: translateY(-50px);}
+  68% {opacity: 1;transform: translateY(0px);}
+  76% {opacity: 0;transform: translateY(50px);}
+
+  100% {opacity: 0;transform: translateY(0px);}
+}
+@keyframes cry_pool {
+  0%, 50% {opacity: 0; transform: translateX(-50%) scale(0.00001)}
+  58% {opacity: 1; transform: translateX(-50%) scale(1)}
+  70% {opacity: 1; transform: translateX(-50%) scale(1.1)}
+  92% {opacity: 1; transform: translateX(-50%) scale(1.2)}
+  100% {opacity: 0; transform: translateX(-50%) scale(1.2)}
+}
+
+
+
+/* animation cool */
+@keyframes cool_face {
+  0%, 100% {top: 0; left: 0;}
+  9% {top: 4px;left: 0;}
+  18% {top: 4px; left: 1px; transform: rotate(3deg)}
+  27% {top: 2px; left: 4px; transform: rotate(7deg)}
+  36% {top: -4px; left: 3px; transform: rotate(7deg)}
+  42% {top: -4px; left: -1px; transform: rotate(-5deg)}
+  50%, 69% {top: -2px; left: 0; transform: rotate(0deg)}
+  74% {top: -4px; left: -2px; transform: rotate(-7deg)}
+  83% {top: -4px; left: 2px; transform: rotate(7deg)}
+  92% {top: -4px; left: 0; transform: rotate(0deg)}
+}
+@keyframes cool_face_mouth {
+  0%, 20%, 92%, 100% {
+    border-bottom-left-radius: 41px 20px;border-bottom-right-radius: 41px 20px;
+    height: 14px; width: 30px;
+    bottom: 36px; left: 50px;
+    transform: rotate(0deg) translateX(-50%);
+    box-shadow: #ffca3f -5px 1px 0 -3px, #ffca3f 5px 1px 0 -3px, #302c3b 0 6px 0 -1px;
+  }
+  45%, 69% { /* 转为弧线 */
+    border-bottom-left-radius: 43px 19px; border-bottom-right-radius: 41px 30px;
+    height: 18px; width: 48px; bottom: 32px;
+    box-shadow: #ffca3f -5px 1px 0 -3px, #ffca3f 15px 0 0 -4px, #302c3b 1px 6px 0 -1px;
+    transform: translateX(-50%) rotate(-12deg);
+  }
+}
+@keyframes cool_glasses {
+  0%, 100% {opacity: 0; transform: rotate(90deg) scale(0.00001);top: -10px; left: -20px;}
+  40%, 88% {opacity: 1; transform: rotate(90deg) scale(0.00001);top: 0; left: 0;}
+  50% {opacity: 1; transform: rotate(0deg); top: 0; left: 0;}
+  52% {opacity: 1; transform: rotate(-2deg); top: 0; left: 0;}
+  55% {opacity: 1; transform: rotate(0deg); top: -1px; left: 0;}
+  62% {opacity: 1; transform: rotate(0deg);top: -1px;}
+  69.5% {opacity: 1; transform: rotate(-3deg);top: -2px;}
+  /* 甩 */
+  78% {opacity: 1; transform: rotate(0deg);top: -2px;}
+}
+
+
+
+/* animation angry */
+@keyframes angry_eye_left {
+  0%, 17%, 31%, 60%, 78%, 100% {top: 34px;transform: rotate(24deg) scale(1);}
+  9%, 24%, 43%, 52%, 68% {top: 36px; transform: rotate(24deg) scale(1);}
+  48% { top: 34px;transform: rotate(24deg) scale(1.2);}
+  49% {top: 34px;transform: rotate(24deg) scale(1);}
+}
+@keyframes angry_eye_right {
+  0%, 17%, 31%, 60%, 78%, 100% {top: 34px;transform: rotate(-24deg) rotateY(180deg) scale(1);}
+  9%, 24%, 43%, 52%, 68% {top: 36px; transform: rotate(-24deg) rotateY(180deg) scale(1);}
+  48% { top: 34px;transform: rotate(-24deg) rotateY(180deg) scale(1.2);}
+  49% {top: 34px;transform: rotate(-24deg) rotateY(180deg) scale(1);}
+}
+@keyframes screen_jump {
+  0%, 10%, 90%, 100% {transform: translateX(-50%) rotate(-5deg) scale(1);}
+  18%, 38%, 80% {transform: translateX(-50%) rotate(-5deg) scale(1.1);}
+  23%, 44%, 53% {transform: translateX(-50%) rotate(0deg) scale(1.05);}
+  30%, 62%, 85% {transform: translateX(-50%) rotate(-5deg) scale(1);}
+}
+
+
+
+/* animation wink */
+@keyframes eyebrow_left {
+  0%, 44%, 91%, 100% {transform: rotate(24deg) rotateX(180deg) rotateY(360deg);top: 22px;left: 18px;}
+  57.75%, 77.78% {transform: rotate(32deg) rotateX(180deg) rotateY(360deg);top: 19px;left: 20px;}
+}
+@keyframes eyebrow_right {
+  0%, 44%, 91%, 100% {transform: rotate(-24deg) rotateX(180deg) rotateY(180deg);left: auto;right: 18px;top: 22px;}
+  53% {transform: rotate(-38deg) rotateX(180deg) rotateY(180deg);left: auto;right: 23px;top: 32px;}
+  72% {transform: rotate(-48deg) rotateX(180deg) rotateY(180deg);left: auto;right: 23px;top: 32px;}
+}
+@keyframes eye_left {
+  0%, 44%, 91%, 100% {height: 16px;top: 40px;left: 25px;}
+  54.4% {height: 16px;top: 42px}
+  68.89% {height: 18px;top: 41px;}
+  85.6% {height: 16px;top: 40px}
+}
+@keyframes eye_right {
+  0%, 44%, 91%, 100% {width: 16px;height: 16px;border-radius: 50%;top: 40px;left: auto;right: 25px;}
+  48.89% {top: 41px;}
+  51.1% {top: 42px;width: 20px;right: 22px;height: 14px;}
+  53.3% {top: 44px;width: 21px;right: 21px;height: 12px;}
+  70%, 72% {top: 45px;width: 23px;right: 20px;height: 11px;}
+  83.3% {top: 44px;width: 21px;right: 21px;height: 12px;}
+  87.78% {top: 40px;width: 16px;height: 16px;border-radius: 50%;right: 25px; }
+}
+@keyframes eye_r_cover {
+  0%, 44%, 87%, 100% {border-radius: 0;top: 57px; right: 21px; width: 20px; height: 14px;}
+  51.1% {top: 54px;}
+  53.3% {top: 53px;border-radius: 50%}
+  56%, 80% {top: 51px;border-radius: 50%}
+}
+@keyframes lip_chu {
+  0%, 57.78%, 77%, 100% {transform: translateX(-5px) scale(1, 1);left: 50px;bottom: 5px;}
+  63.3% {transform: translateX(-5px) scale(1, .75); left: 55px;bottom: 6px;}
+}
+@keyframes heart1 {
+  0%, 66% {transform: rotate(-20deg) scale(0.00001); left: 44px; top: 42px; opacity: 0;}
+  70% {transform: rotate(-30deg) scale(.2); left: 58px; top: 41px;opacity: 1}
+  71% {transform: rotate(-40deg) scale(.25); left: 64px; top: 38px;opacity: 1}
+  74% {transform: rotate(-45deg) scale(.4); left: 72px; top: 30px;opacity: 1}
+  79% {transform: rotate(-50deg) scale(.4); left: 74px; top: 26px;opacity: 1}
+  81% {transform: rotate(-53deg) scale(.4); left: 75px; top: 25px;opacity: 1}
+  97%, 100% {transform: rotate(-53deg) scale(.4); left: 82px; top: 22px; opacity: 0}
+}
+@keyframes heart2 {
+  0%, 63% {transform: rotate(0deg) scale(0.00001); left: 44px; top: 50px; opacity: 1;}
+  70% {transform: rotate(-35deg) scale(.5); left: 65px; top: 54px;opacity: 1}
+  71% {transform: rotate(-45deg) scale(.6); left: 70px; top: 54px;opacity: 1}
+  76% {transform: rotate(-55deg) scale(.7); left: 78px; top: 50px;opacity: 1}
+  97%, 100% {transform: rotate(-64deg) scale(.4); left: 84px; top: 45px; opacity: 0}
+}
+@keyframes heart3 {
+  0%, 61% {transform: rotate(-30deg) scale(0.00001); left: 44px; top: 54px; opacity: 1;}
+  66% {transform: rotate(-45deg) scale(.3); left: 60px; top: 56px; opacity: 1;}
+  74% {transform: rotate(-70deg) scale(.3); left: 64px; top: 63px; opacity: 1;}
+  78% {transform: rotate(-70deg) scale(.3); left: 66px; top: 65px; opacity: 1;}
+  97%, 100% {transform: rotate(-70deg) scale(.3); left: 80px; top: 68px; opacity: 0;}
+}
+
+
+
+/* 适配 */
+@media (max-width: 992px) {
+  .circle_line{display: none}
+  .global, .main, .bg_box, .main_bg {
+    width: fit-content;
+    height: fit-content;
+    max-width: 600px;
+    max-height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .emoji {margin: 20px 30px; }
+}
+
+@media (max-width: 768px) {
+  .circle_line{display: none}
+  .global, .main, .bg_box, .main_bg {
+    max-width: 400px;
+    max-height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .emoji {margin: 30px 15px; }
+}
