@@ -156,7 +156,7 @@ window.onload = function () {
         // circle_line.style.animation = "circle_line 2s ease infinite"
         isReady = true; // 入场完毕
       }, 800);
-    }, 2000);
+    }, 1000);
   } else if (globalWidth >= 768) {
     main.style.opacity = "1";
     main_bg.style.opacity = "1";
@@ -220,4 +220,4 @@ main.addEventListener("mouseleave", function () {
   clearTimeout(timer);
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.a722a43a.js.map
+//# sourceMappingURL=main.0e42ad59.js.map
